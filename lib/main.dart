@@ -21,7 +21,7 @@ void main() {
       //   centerTitle: true,
       // ),
       // body: DefaultPage(),
-      body: HomeScreen(),
+      body: Home(),
     ),
   ));
 }

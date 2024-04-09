@@ -1,133 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:unieats/widget/widget_support.dart';
 
-class HomeScreen extends StatelessWidget{
+class Home extends StatefulWidget{
+  const Home({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home>{
+  @override
+  // TODO: implement widget
+  Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hello, User!'),
-        backgroundColor: Colors.green, // Green color for the app bar
-      ),
       body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column( 
-          crossAxisAlignment: CrossAxisAlignment.start, 
+        margin: EdgeInsets.only(top:50.0, left:20.0, right:10.0),
+        child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Hello, User !",
+                  style:AppWidget.boldTextFeildStyle()
+                ),
+                  Container(
+                    padding: EdgeInsets.all(3),
+                    decoration: BoxDecoration(color: Colors.black, borderRadius:BorderRadius.circular(8)),
+                    child: Icon(Icons.shopping_cart_outlined, color: Colors.white,),
+                  )
+              ],
+            ),
+            SizedBox(height: 40.0,),
             Text(
-              'Choose your Meal for your Comfort',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold), // Style the main text
-            ),
-            SizedBox(height: 20.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align items horizontally
-              children: [
-                Text(
-                  'Chicken Kottu',
-                  style: TextStyle(fontSize: 16.0),
+                  "Delicious Food",
+                  style:AppWidget.boldTextFeildStyle()
                 ),
-                Text(
-                  'Rs. 450.00',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0), 
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Fried Rice',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'Rs. 550.00',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
-            ),
-            SizedBox(height: 20.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Parata',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'Rs. 50.00',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Biriyani',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-                Text(
-                  'Rs. 750.00',
-                  style: TextStyle(fontSize: 16.0),
-                ),
-              ],
-            ),
-            SizedBox(height: 20.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'So Cafe',
-                  style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                ),
-                Text(
-                  'Hela Bojun',
-                  style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Audi Canteen',
-                  style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                ),
-                Text(
-                  'Hela Bojun',
-                  style: TextStyle(fontSize: 12.0, color: Colors.grey),
-                ),
-              ],
-            ),
-            SizedBox(height: 20.0), 
-
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Total',
-                  style: TextStyle(fontSize: 1)
-                )
-              ]
-            )
-          ]
-        )
-      )
+          
+          ],
+        ),
+      ),
     );
   }
 }
-

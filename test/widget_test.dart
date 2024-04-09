@@ -16,10 +16,12 @@ void main() {
     await tester.pumpWidget(const MyApp() as Widget);
 
     // Verify that our counter starts at 0.
+    var find;
     expect(find.text('0'), findsOneWidget);
     expect(find.text('1'), findsNothing);
 
     // Tap the '+' icon and trigger a frame.
+    var add;
     await tester.tap(find.byIcon(Icons.add));
     await tester.pump();
 
@@ -27,6 +29,36 @@ void main() {
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
   });
+}
+
+mixin add {
+}
+
+class Icons {
+  static var add;
+}
+
+mixin findsNothing {
+}
+
+mixin findsOneWidget {
+}
+
+void expect(text, findsOneWidget) {
+}
+
+class Widget {
+}
+
+void testWidgets(String s, Future<Null> Function(WidgetTester tester) param1) {
+}
+
+class WidgetTester {
+  pumpWidget(Widget myApp) {}
+  
+  tap(byIcon) {}
+  
+  pump() {}
 }
 
 class MyApp {

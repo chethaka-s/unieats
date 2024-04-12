@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unieats/pages/default.dart';
 // import "pages/default.dart";
 import 'package:unieats/pages/home.dart';
 import 'package:unieats/firebase_options.dart';
@@ -27,7 +28,7 @@ void main() async {
       // ),
       // body: DefaultPage(),
       // body: SignUpPage(),
-        body: Home(),
+      body: DefaultPage(),
     ),
   ));
 }

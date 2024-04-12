@@ -10,6 +10,16 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   int a = 1;
+  int quantity = 1;
+  double price = 450.00;
+
+  void increaseQuantity() {
+    setState(() {
+      quantity++;
+      // Update price as needed
+      price = quantity * 450.00; // For example, increase by $10 each time
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +62,7 @@ class _DetailsState extends State<Details> {
                   onTap: () {
                     if (a > 1) {
                       --a;
+                        price = 450.00 * a;
                     }
                     setState(() {});
                   },
@@ -79,6 +90,7 @@ class _DetailsState extends State<Details> {
                   onTap: () {
                     ++a;
                     setState(() {});
+                    price = 450.00 * a;
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -96,7 +108,7 @@ class _DetailsState extends State<Details> {
               height: 20.0,
             ),
             Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+              "Kottu roti is made with a type of flatbread called “Godhambara roti” or “Godamba roti” (which is also called roti canai, which originates from Malaysia, or the flakier cousin \– paratha, from India), that is shredded and then mixed with vegetables, meat and eggs (or not, for a vegetarian or vegan option) and aromatic spices and sauces",
               maxLines: 4,
               style: AppWidget.LiteTextFeildStyle(),
             ),
@@ -106,7 +118,7 @@ class _DetailsState extends State<Details> {
             Row(
               children: [
                 Text(
-                  "Delivery Time",
+                  "Preparation time",
                   style: AppWidget.semiBoldTextFeildStyle(),
                 ),
                 SizedBox(
@@ -120,7 +132,7 @@ class _DetailsState extends State<Details> {
                   width: 5.0,
                 ),
                 Text(
-                  "30 min",
+                  "15 mins ",
                   style: AppWidget.semiBoldTextFeildStyle(),
                 )
               ],
@@ -139,7 +151,7 @@ class _DetailsState extends State<Details> {
                         style: AppWidget.semiBoldTextFeildStyle(),
                       ),
                       Text(
-                        "Rs. 450.00",
+                        "Rs. ${price.toStringAsFixed(2)}",
                         style: AppWidget.HeadlineTextFeildStyle(),
                       )
                     ],
@@ -154,7 +166,7 @@ class _DetailsState extends State<Details> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "Add to cart",
+                          "Order Now",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16.0,

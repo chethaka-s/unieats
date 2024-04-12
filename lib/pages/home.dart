@@ -86,19 +86,15 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             width: 40,
                           ),
-                      GestureDetector(
-                        onTap: () {
-
-                        },
-                      child: Container(
-                        child: Image.asset(
-                          "assets/plusicon.png",
-                          height: 40,
-                          width: 40,
-                          
-                            ),
-                          ),
-                        ),
+                      IconButton(
+                        icon: Image.asset('assets/plusicon.png'), 
+                        onPressed: () {
+                          Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => Details()),
+                          );
+                          },
+                      ),
                       ],
                     ),
                   ],
@@ -138,19 +134,15 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             width: 40,
                           ),
-                      GestureDetector(
-                        onTap: () {
-
-                        },
-                      child: Container(
-                        child: Image.asset(
-                          "assets/plusicon.png",
-                          height: 40,
-                          width: 40,
-                          
-                            ),
-                          ),
-                        ),
+                      IconButton(
+                        icon: Image.asset('assets/plusicon.png'), 
+                        onPressed: () {
+                          Navigator.push(
+                          context, 
+                          MaterialPageRoute(builder: (context) => Details()),
+                          );
+                          },
+                      ),
                       ],
                     ),
                   ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unieats/pages/default.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:unieats/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -89,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               TextField(
-                controller:_passwordTextController,
+                controller: _passwordTextController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password",
@@ -108,7 +110,18 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextcontroller.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                },
                 child: Text(
                   "Sign In",
                   style: TextStyle(

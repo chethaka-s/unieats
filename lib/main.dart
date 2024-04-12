@@ -4,10 +4,11 @@ import 'package:unieats/pages/home.dart';
 import 'package:unieats/firebase_options.dart';
 import 'package:unieats/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:unieats/pages/sign_up.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp();
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MaterialApp(
@@ -25,7 +26,7 @@ void main() async {
       //   centerTitle: true,
       // ),
       // body: DefaultPage(),
-      body: Home(),
+      body: SignUpPage(),
     ),
   ));
 }

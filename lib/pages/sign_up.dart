@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:unieats/pages/home.dart';
 import 'package:unieats/pages/sign_in.dart';
 import 'package:unieats/pages/default.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -8,6 +10,11 @@ class SignUpPage extends StatefulWidget {
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
+
+TextEditingController _passwordTextController = TextEditingController();
+TextEditingController _emailTextController = TextEditingController();
+TextEditingController _nameTextController = TextEditingController();
+TextEditingController _studentIdTextController = TextEditingController();
 
 class _SignUpPageState extends State<SignUpPage> {
   @override
@@ -68,10 +75,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               SizedBox(
-                // height: 20,
-              ),
+                  // height: 20,
+                  ),
               TextField(
-                obscureText: true,
+                controller: _nameTextController,
                 decoration: InputDecoration(
                   labelText: "Full Name",
                   labelStyle: TextStyle(color: Colors.white),
@@ -89,7 +96,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 10,
               ),
               TextField(
-                obscureText: true,
+                controller: _studentIdTextController,
                 decoration: InputDecoration(
                   labelText: "Student ID",
                   labelStyle: TextStyle(color: Colors.white),
@@ -104,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 10,
               ),
               TextField(
-                obscureText: true,
+                controller: _emailTextController,
                 decoration: InputDecoration(
                   labelText: "Email",
                   labelStyle: TextStyle(color: Colors.white),
@@ -118,22 +125,23 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(
                 height: 10,
               ),
+              // TextField(
+              //   obscureText: true,
+              //   decoration: InputDecoration(
+              //     labelText: "Batch",
+              //     labelStyle: TextStyle(color: Colors.white),
+              //     border: OutlineInputBorder(
+              //       borderRadius: BorderRadius.circular(25),
+              //     ),
+              //     filled: true,
+              //     fillColor: Colors.white.withOpacity(0.2),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 50,
+              // ),
               TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "Batch",
-                  labelStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.2),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              TextField(
+                controller: _passwordTextController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password",
@@ -164,7 +172,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 10,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    print("Created New Account");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                },
                 child: Text(
                   "Sign Up",
                   style: TextStyle(

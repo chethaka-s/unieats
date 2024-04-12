@@ -11,7 +11,10 @@ class Order extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.home),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+              ),
           ),
         ],
       ),

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // import "pages/default.dart";
 import 'package:unieats/pages/home.dart';
 import 'package:unieats/firebase_options.dart';
 import 'package:unieats/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:unieats/pages/order.dart';
 import 'package:unieats/pages/sign_up.dart';
 
 void main() async {
@@ -27,7 +29,8 @@ void main() async {
       // ),
       // body: DefaultPage(),
       // body: SignUpPage(),
-        body: Home(),
+      body: Home(),
+      
     ),
   ));
 }

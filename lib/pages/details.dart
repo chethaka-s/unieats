@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unieats/pages/order.dart';
 import 'package:unieats/widget/widget_support.dart';
 
 class Details extends StatefulWidget {
@@ -154,7 +155,7 @@ class _DetailsState extends State<Details> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          "Add to cart",
+                          "Order now",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16.0,
@@ -166,25 +167,35 @@ class _DetailsState extends State<Details> {
                         Container(
                           padding: EdgeInsets.all(3),
                           decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(8)),
-                          child: Icon(
-                            Icons.shopping_cart_outlined,
-                            color: Colors.white,
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(8),
+                          ),
+                        child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Order())
+                            );
+                        },
+                        icon: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.white,
+                            ),
                           ),
                         ),
                         SizedBox(
-                          width: 10.0,
+                          width: 5.0,
                         ),
-                      ],
-                    ),
-                  )
+
                 ],
               ),
             )
           ],
         ),
       ),
+          ],
+    ),
+    ),
     );
   }
 }

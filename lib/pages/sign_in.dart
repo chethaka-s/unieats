@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unieats/pages/default.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:unieats/pages/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,6 +11,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _emailTextcontroller = TextEditingController();
+  TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "SIGN IN",
+                          "SIGN IN ",
                           style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.bold,
@@ -68,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 170,
               ),
               TextField(
+                controller: _emailTextcontroller,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Email",
@@ -86,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               TextField(
+                controller: _passwordTextController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password",
@@ -104,7 +110,18 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextcontroller.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
+                },
                 child: Text(
                   "Sign In",
                   style: TextStyle(

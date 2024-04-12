@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 // import "pages/default.dart";
 import 'package:unieats/pages/home.dart';
+import 'package:unieats/firebase_options.dart';
+import 'package:unieats/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:unieats/pages/sign_up.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-
-
-void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
@@ -21,7 +26,7 @@ void main() {
       //   centerTitle: true,
       // ),
       // body: DefaultPage(),
-      body: Home(),
+      body: SignUpPage(),
     ),
   ));
 }

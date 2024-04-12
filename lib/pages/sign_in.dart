@@ -9,6 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _emailTextcontroller = TextEditingController();
+  TextEditingController _passwordTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          "SIGN IN",
+                          "SIGN IN ",
                           style: TextStyle(
                             fontSize: 50,
                             fontWeight: FontWeight.bold,
@@ -68,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 170,
               ),
               TextField(
+                controller: _emailTextcontroller,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Email",
@@ -86,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               TextField(
+                controller:_passwordTextController,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password",

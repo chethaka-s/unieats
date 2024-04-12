@@ -26,7 +26,8 @@ void main() async {
       //   centerTitle: true,
       // ),
       // body: DefaultPage(),
-      body: SignUpPage(),
+      // body: SignUpPage(),
+        body: Home(),
     ),
   ));
 }
